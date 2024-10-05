@@ -42,7 +42,7 @@ const HomeIndex = () => {
   });
   
 
-  const [blackOutDone, setBlackOutDone]= useState<boolean>(true);
+  const [blackOutDone, setBlackOutDone]= useState<boolean>(false);
 
   return (
     <div ref={parentDivRef} className={`${pacificoFont.className} text-gray-800 h-svh overflow-hidden overflow-y-scroll`}>
