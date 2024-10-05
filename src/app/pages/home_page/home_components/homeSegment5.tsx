@@ -74,11 +74,11 @@ const HomeSegmentt5=()=> {
       
       
       <h1 className='text-5xl tracking-widest text-orange-800'>
-          Designers' Showcase
+          {"Designers' Showcase "}
       </h1>
 
       <p className={`${rubikFont.className} w-[60%] mx-auto text-center`}>
-          From boardrooms to courtrooms to runways and everywhere in between, we all have our unique sense of style, and Together, we are Africa's Finest.
+          {"From boardrooms to courtrooms to runways and everywhere in between, we all have our unique sense of style, and Together, we are Africa's Finest. "}
       </p>
       
 
@@ -91,7 +91,7 @@ const HomeSegmentt5=()=> {
           </h1>
 
           <div className="image-slider-container flex w-full h-full gap-x-3 justify-center items-center">
-            <IconButton onClick={()=> {sliderRef.current&& sliderRef.current.slickPrev(); }}  className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderRef.current&& sliderRef.current.slickPrev(); }}  className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkPrevious className="size-[20px]"/>
             </IconButton>
 
@@ -140,7 +140,7 @@ const HomeSegmentt5=()=> {
             </Slider>
 
 
-            <IconButton onClick={()=> {sliderRef.current&& sliderRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderRef.current&& sliderRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkNext  className="size-[20px]"/>
             </IconButton>   
 
@@ -160,7 +160,7 @@ const HomeSegmentt5=()=> {
           </h1>
 
           <div className="image-slider-container flex w-full h-full gap-x-3 justify-center items-center">
-            <IconButton onClick={()=> {sliderShoesRef.current&& sliderShoesRef.current.slickPrev();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderShoesRef.current&& sliderShoesRef.current.slickPrev();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkPrevious className="size-[20px]"/>
             </IconButton>
 
@@ -209,7 +209,7 @@ const HomeSegmentt5=()=> {
             </Slider>
 
 
-            <IconButton onClick={()=> {sliderShoesRef.current&& sliderShoesRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderShoesRef.current&& sliderShoesRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkNext  className="size-[20px]"/>
             </IconButton>   
 
@@ -229,7 +229,7 @@ const HomeSegmentt5=()=> {
           </h1>
 
           <div className="image-slider-container flex w-full h-full gap-x-3 justify-center items-center">
-            <IconButton onClick={()=> {sliderCapSpecRef.current&& sliderCapSpecRef.current.slickPrev();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderCapSpecRef.current&& sliderCapSpecRef.current.slickPrev();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkPrevious className="size-[20px]"/>
             </IconButton>
 
@@ -278,7 +278,7 @@ const HomeSegmentt5=()=> {
             </Slider>
 
 
-            <IconButton onClick={()=> {sliderCapSpecRef.current&& sliderCapSpecRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+            <IconButton onClick={()=> {return sliderCapSpecRef.current&& sliderCapSpecRef.current.slickNext();}} className="cursor-pointer flex justify-center items-center rounded-full size-[40px] bg-orange-800 text-white" placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
               <GrLinkNext  className="size-[20px]"/>
             </IconButton>   
 

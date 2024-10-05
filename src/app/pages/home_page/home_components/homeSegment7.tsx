@@ -93,7 +93,7 @@ const HomeSegment7 = () => {
 
                     <div className='absolute left-0 right-0 top-0 bottom-0 p-8 bg-black/40 flex flex-col justify-center items-center'>
                         <p className='w-[50%] text-center mx-auto text-white'>
-                        By subscribing, you'll receive the latest news on the fashion show schedule, highlights, and more.
+                         {" By subscribing, you'll receive the latest news on the fashion show schedule, highlights, and more. "}
                         </p>
 
 

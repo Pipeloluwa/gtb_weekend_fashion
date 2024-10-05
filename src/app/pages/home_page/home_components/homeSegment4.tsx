@@ -11,7 +11,7 @@ interface IHomeSegment4{
     completed:boolean
 }
 
-const HomeSegment4:React.FC<IHomeSegment4> = ({ days, hours, minutes, seconds, completed }) => {
+const HomeSegment4:React.FC<IHomeSegment4> = ({ days, hours, minutes, seconds }) => {
     const countDownData= {
         text: "Our Event Begins On November 10",
         dateTime: "2024-11-03T01:02:03",

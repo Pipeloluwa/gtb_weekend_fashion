@@ -21,7 +21,7 @@ const HomeSegment3 = () => {
             </h1>
 
             <p className={`${rubikFont.className} w-[60%] mx-auto text-center`}>
-                From boardrooms to courtrooms to runways and everywhere in between, we all have our unique sense of style, and Together, we are Africa's Finest.
+                {"From boardrooms to courtrooms to runways and everywhere in between, we all have our unique sense of style, and Together, we are Africa's Finest."}
             </p>
         
         </div>
