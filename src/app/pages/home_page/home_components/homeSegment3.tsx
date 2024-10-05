@@ -1,6 +1,5 @@
 import { rubikFont } from '@/app/fonts/fontsConfig'
 import Image from 'next/image';
-import React from 'react'
 import Marquee from 'react-fast-marquee'
 
 const HomeSegment3 = () => {

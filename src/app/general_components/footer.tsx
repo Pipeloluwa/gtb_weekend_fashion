@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import {
     FaDribbbleSquare,
     FaFacebookSquare,
@@ -7,7 +7,7 @@ import {
     FaTwitterSquare
 } from 'react-icons/fa';
 
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { cardVariantsUp4 } from "../general_animations/framerAnimation/variants";
 import { rubikFont } from "../fonts/fontsConfig";
 

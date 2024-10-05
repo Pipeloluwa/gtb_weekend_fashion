@@ -1,10 +1,9 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/state_management/store';
 import { Button } from '@material-tailwind/react';
 import { rubikFont } from '../fonts/fontsConfig';
-import Image from 'next/image';
 import LogoComponent from './logoComponent';
 
 
@@ -59,7 +58,7 @@ const NavBar = () => {
                     </li>
 
                     <li className={`cursor-pointer ${navBgTypeLocal=== 'show' ? 'bg-orange-800 shadow-sm shadow-gray-900 text-white transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
-                        Live Feed
+                        Live
                     </li>
 
                     <li className={`cursor-pointer ${navBgTypeLocal=== 'show' ? 'bg-orange-800 shadow-sm shadow-gray-900 text-white transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>

@@ -3,8 +3,7 @@ import Slider from "@ant-design/react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import { MutableRefObject, useRef, useState } from "react";
-import { BiArrowBack } from "react-icons/bi";
+import { useRef, useState } from "react";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { Button, IconButton } from "@material-tailwind/react";
 import DesignerShowcaseDialog from "./designerShowcaseDialog";
@@ -60,9 +59,9 @@ const HomeSegmentt5=()=> {
 
   const [dialogState, setDialogState]= useState(false);
 
-  let sliderRef = useRef<Slider|null>(null);
-  let sliderShoesRef = useRef<Slider|null>(null);
-  let sliderCapSpecRef = useRef<Slider|null>(null);
+  const sliderRef = useRef<Slider|null>(null);
+  const sliderShoesRef = useRef<Slider|null>(null);
+  const sliderCapSpecRef = useRef<Slider|null>(null);
 
 
 

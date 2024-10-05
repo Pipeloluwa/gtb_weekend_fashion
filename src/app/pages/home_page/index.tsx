@@ -19,8 +19,8 @@ import HomeSegment8 from './home_components/homeSegment8';
 
 
 const HomeIndex = () => {
-  let dt= new Date();
-  dt.setMonth(1);
+  const dateTime= new Date();
+  dateTime.setMonth(1);
 
   const parentDivRef :React.MutableRefObject<HTMLDivElement | null>= useRef(null);
   const dispatch= useDispatch();
@@ -39,7 +39,7 @@ const HomeIndex = () => {
       parentDivRef.current.addEventListener('scroll', handleScroll);  
     }
  
-  }, []);
+  });
   
 
   const [blackOutDone, setBlackOutDone]= useState<boolean>(true);
@@ -49,12 +49,12 @@ const HomeIndex = () => {
       
       <NavBar />
 
-      {/* {
+      {
         !blackOutDone
         &&
         <IntroShow setBlackOutDone={setBlackOutDone}/>
 
-      } */}
+      }
 
 
 

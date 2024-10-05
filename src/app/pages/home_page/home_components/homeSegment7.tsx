@@ -1,8 +1,9 @@
 import { rubikFont } from '@/app/fonts/fontsConfig'
-import { Button, Spinner } from '@material-tailwind/react'
+import { Button, Dialog, DialogBody, Spinner } from '@material-tailwind/react'
 import React, { LegacyRef, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
 import Image from 'next/image';
+import { MdCancel, MdOutlineDone } from 'react-icons/md';
 
 const HomeSegment7 = () => {
 
@@ -131,7 +132,32 @@ const HomeSegment7 = () => {
                     </div>
                 </div>
 
+                
+                <Dialog
+                    open= {dialog1 !== ""}
+                    handler={() => {setDialog1("")}} 
+                    className='bg-white/70'
+                    size='sm'
+                    placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}
+                >
 
+                    <DialogBody className='flex items-center justify-center text-blue-800 text-2xl py-[130px]' placeholder={""} onPointerEnterCapture={ () => {}} onPointerLeaveCapture={ () => {}}>
+                        <div className='flex flex-col items-center justify-center'>
+                            {
+                                dialog1 === "Sorry, could not send information, something went wrong"
+                                ? <MdCancel className='size-[100px] text-red-500'/>
+
+                                : <MdOutlineDone className='size-[100px] text-blue-800'/>
+                            }
+                            
+
+                            <h1 className={`${dialog1 === "Sorry, could not send information, something went wrong" ? "text-red-500" : "text-blue-800"} text-center`}>
+                                {dialog1}
+                            </h1>
+
+                        </div>
+                    </DialogBody>
+                </Dialog>
             
             </div>
 

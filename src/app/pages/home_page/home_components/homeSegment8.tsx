@@ -1,7 +1,4 @@
 import { rubikFont } from '@/app/fonts/fontsConfig'
-import { Button } from '@material-tailwind/react'
-import Image from 'next/image'
-import React from 'react'
 
 const HomeSegment8 = () => {
   return (

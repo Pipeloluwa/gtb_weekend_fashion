@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState } from 'react';
-import { Button, Dialog, DialogBody } from '@material-tailwind/react';
+import { Dispatch, SetStateAction } from 'react';
+import { Dialog, DialogBody } from '@material-tailwind/react';
 import { rubikFont } from '@/app/fonts/fontsConfig';
 import Image from 'next/image';
 

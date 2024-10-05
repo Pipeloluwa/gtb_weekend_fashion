@@ -1,5 +1,4 @@
 "use client";
-import SlideShow from './slideShow';
 import { rubikFont } from '@/app/fonts/fontsConfig';
 import { motion, easeInOut, AnimatePresence } from 'framer-motion';
 import TypeIt from 'typeit-react';
