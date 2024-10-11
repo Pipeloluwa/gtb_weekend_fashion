@@ -127,8 +127,6 @@ const PageIndex = () => {
   ]
   const [videos, setVideos] = useState<IVideoItem[]>([]);
   const [nextPageToken, setNextPageToken] = useState(null);
-  const channelId= "UCPTp1DKGYEyUDjdjA_p1tbQ";
-  const youtubeApiKey= "AIzaSyCcbmgZJVVRWWsknqQQNdsULT18V1PVFD4";
   const [dialogState, setDialogState]= useState(false);
   const [singleData, setSingleData]= useState<ISingleData>();
 
