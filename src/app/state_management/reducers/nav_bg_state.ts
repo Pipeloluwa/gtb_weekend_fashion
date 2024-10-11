@@ -25,9 +25,13 @@ const navBg= createSlice({
                 }
             }
             
+        },
+
+        setNavBgManual: (state, args: PayloadAction<{navValue: boolean}>) => {
+            state.value= args.payload.navValue;
         }
     }
 });
 
-export const{setNavBg}= navBg.actions;
+export const{setNavBg, setNavBgManual}= navBg.actions;
 export default navBg.reducer;

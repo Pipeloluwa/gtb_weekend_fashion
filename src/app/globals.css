@@ -30,6 +30,7 @@
     @apply  sm:h-[60px] sm:min-w-[205px] min-w-[170px] w-full h-[50px] text-xl rounded-lg shadow-sm shadow-black
   }
 
+
   .small-button{
     @apply  sm:h-[45px] sm:w-[130px] h-[35px] w-[90px] text-xl rounded-lg shadow-sm shadow-black
   }

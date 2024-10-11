@@ -5,6 +5,7 @@ import { RootState } from '@/app/state_management/store';
 import { Button } from '@material-tailwind/react';
 import { rubikFont } from '../fonts/fontsConfig';
 import LogoComponent from './logoComponent';
+import Link from 'next/link';
 
 
 const NavBar = () => {
@@ -57,9 +58,9 @@ const NavBar = () => {
                         Highlights
                     </li>
 
-                    <li className={`cursor-pointer ${navBgTypeLocal=== 'show' ? 'bg-orange-800 shadow-sm shadow-gray-900 text-white transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
-                        Live
-                    </li>
+                    <Link href={"/pages/feed-page"} className={`cursor-pointer ${navBgTypeLocal=== 'show' ? 'bg-orange-800 shadow-sm shadow-gray-900 text-white transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
+                        Feeds
+                    </Link>
 
                     <li className={`cursor-pointer ${navBgTypeLocal=== 'show' ? 'bg-orange-800 shadow-sm shadow-gray-900 text-white transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
                         Polls
