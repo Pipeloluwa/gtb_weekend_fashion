@@ -35,6 +35,26 @@
     @apply  sm:h-[45px] sm:w-[130px] h-[35px] w-[90px] text-xl rounded-lg shadow-sm shadow-black
   }
 
+  .my-picture-style{
+    @apply overflow-hidden rounded-full shadow shadow-gray-700;
+  }
+
+  .my-image-cover-style{
+    @apply object-cover w-full h-full;
+  }
+
+  .my-button-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] sm:px-6 px-4 text-white font-bold bg-orange-800 mt-6 md:py-3 sm:py-2 h-[60px] md:h-fit rounded-xl border border-white hover:bg-white hover:border hover:border-orange-800 hover:text-orange-800;
+  }
+
+  .my-button-border-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] px-6 text-orange-800 font-bold bg-white mt-6 py-3 rounded-3xl border border-orange-800 hover:bg-orange-800 hover:border hover:border-white hover:text-white;
+  }
+  
+  .my-shadow-style{
+    @apply shadow-sm shadow-gray-500;
+  }
+
 }
 
 
@@ -81,6 +101,31 @@
  
   font-size: 20px;
 }
+
+
+.animated-background-2 {
+
+  background: linear-gradient(90deg, #ffd2ac, #f4f7ff, #ffefde);
+  background-size: 300% 300%;
+  animation: moveBackground 5s infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  font-size: 20px;
+}
+
+.animated-background-2-reverse {
+  background: linear-gradient(90deg, #ffefde, #f4f7ff, #ffd2ac);
+  background-size: 300% 300%;
+  animation: moveBackground 5s infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  font-size: 20px;
+}
+
 
 /* Keyframes to animate the background position */
 @keyframes moveBackground {

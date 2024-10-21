@@ -19,7 +19,6 @@ export default function RootLayout({
       <body
         className={`${playFont.className} antialiased overflow-hidden`}
       >
-        
 
         <StateProvider>
           {children}
