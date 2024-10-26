@@ -1,12 +1,21 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import Countdown from 'react-countdown';
+import HomeSegment1 from '../../../components/client-components/home-components/HomeSegmentComponent1';
+import IntroShow from '../../../components/client-components/home-components/IntroShowComponent';
+import HomeSegment2 from '../../../components/client-components/home-components/HomeSegmentComponent2';
 import { useDispatch } from 'react-redux';
 import { setNavBg } from '@/app/state_management/reducers/client-reducers/navBgState';
+import HomeSegment3 from '../../../components/client-components/home-components/HomeSegmentComponent3';
+import HomeSegment4 from '../../../components/client-components/home-components/HomeSegmentComponent4';
 import HomeSegment5 from '../../../components/client-components/home-components/HomeSegmentComponent5';
+import HomeSegment6 from '../../../components/client-components/home-components/HomeSegmentComponent6';
 import HomeSegment7 from '../../../components/client-components/home-components/HomeSegmentComponent7';
 import HomeSegment8, { IEmbeddedSource } from '../../../components/client-components/home-components/HomeSegmentComponent8';
 import { setNavValue } from '@/app/state_management/reducers/client-reducers/navValue';
 
+
+export let storeBlackOutDone: string | null = sessionStorage.getItem("blackOutDone");
 
 
 const HomeIndex = () => {
@@ -16,6 +25,7 @@ const HomeIndex = () => {
   const parentDivRef :React.MutableRefObject<HTMLDivElement | null>= useRef(null);
   const dispatch= useDispatch();
   const [blackOutDone, setBlackOutDone]= useState<boolean>(true);
+  
 
 
   useEffect(() => {
@@ -26,6 +36,8 @@ const HomeIndex = () => {
 
       parentDivRef.current.addEventListener('scroll', handleScroll);  
     }
+
+    storeBlackOutDone = sessionStorage.getItem("blackOutDone");
 
   });
 
@@ -46,17 +58,17 @@ const HomeIndex = () => {
   return (
     <>
 
-      {/* {
-        !blackOutDone
+      {
+        !storeBlackOutDone
         &&
         <IntroShow setBlackOutDone={setBlackOutDone}/>
 
-      } */}
+      }
 
 
 
       <div className='space-y-44 '>
-        {/* <HomeSegment1 blackOutDone= {blackOutDone}/> */}
+        <HomeSegment1 blackOutDone= {blackOutDone}/>
 
               
         {
@@ -64,16 +76,16 @@ const HomeIndex = () => {
           &&
           <>            
 
-            {/* <HomeSegment2 /> */}
+            <HomeSegment2 />
 
-            {/* <Countdown date={countDownData.dateTime} renderer={HomeSegment4}>
-            </Countdown> */}
+            <Countdown date={countDownData.dateTime} renderer={HomeSegment4}>
+            </Countdown>
 
-            {/* <HomeSegment3 /> */}
+            <HomeSegment3 />
             
             <HomeSegment5 />
 
-            {/* <HomeSegment6 /> */}
+            <HomeSegment6 />
 
             <HomeSegment8 source={mapSource.source}/>
 
