@@ -1,5 +1,5 @@
 
-import React, { ReactNode } from "react";
+import React from "react";
 import { Button, IconButton } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
  

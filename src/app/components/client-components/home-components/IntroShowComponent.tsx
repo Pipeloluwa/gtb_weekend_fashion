@@ -93,9 +93,9 @@ const IntroShowComponent: React.FC<ILogoScaleProps> = ({setBlackOutDone}) => {
                         animate={{opacity:1}}
                         transition={{duration:3}}
                         onAnimationComplete={() => {
+                            sessionStorage.setItem("blackOutDone", "true");
                             setBlackOut(value => !value); 
                             setBlackOutDone(value => !value);
-                            sessionStorage.setItem("blackOutDone", "true");
                         }}
 
                         className='bg-white fixed left-0 right-0 top-0 bottom-0'/>

@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 
 const InspirationsFormComponent = () => {
     const dispatch= useDispatch();
-    const [validationText, setValidationText]= useState("");
+    // const [validationText, setValidationText]= useState("");
 
     const [keepProductsData, setKeepProductsData]= useState<IInspirationData>();
     const [productsData, setProductsData]= useState<IInspirationData>();
@@ -46,7 +46,7 @@ const InspirationsFormComponent = () => {
         }
 
 
-        setValidationText("")
+        // setValidationText("")
     }
 
 

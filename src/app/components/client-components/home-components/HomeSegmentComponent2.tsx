@@ -7,7 +7,7 @@ const HomeSegmentComponent2 = () => {
     <div className='w-[75%] mx-auto '>
         <div className='flex flex-col justify-center items-center gap-y-6'>
             <h1 className='text-5xl tracking-widest text-orange-800'>
-                {"Highlights"}
+                {"Live Feed"}
             </h1>
 
             <p className={`${rubikFont.className} w-[60%] mx-auto text-center`}>

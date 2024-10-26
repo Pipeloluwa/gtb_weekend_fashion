@@ -8,6 +8,7 @@ import StaggerText from 'react-stagger-text';
 
 import React from 'react'
 import { Button } from '@material-tailwind/react';
+import Link from 'next/link';
 
 interface HomeSegmentComponent1Props{
     blackOutDone: boolean;
@@ -77,9 +78,9 @@ const HomeSegmentComponent1:React.FC<HomeSegmentComponent1Props> = ({blackOutDon
                             className='z-10'
                             >
 
-                            <Button onClick={() => {}} className={`${rubikFont.className} tracking-widest text-[15px] bg-orange-900 big-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`}>
+                            <Link href={"/pages/client-pages/highlights-page"} className={`${rubikFont.className} tracking-widest text-[15px] bg-orange-900 big-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`}>
                                 {"Explore"}
-                            </Button>
+                            </Link>
                         </motion.div>
 
                     </>

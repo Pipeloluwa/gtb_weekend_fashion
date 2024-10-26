@@ -15,10 +15,11 @@ import HomeSegment8, { IEmbeddedSource } from '../../../components/client-compon
 import { setNavValue } from '@/app/state_management/reducers/client-reducers/navValue';
 
 
-export let storeBlackOutDone: string | null = sessionStorage.getItem("blackOutDone");
 
 
 const HomeIndex = () => {
+  let storeBlackOutDone: string | null;
+
   const dateTime= new Date();
   dateTime.setMonth(1);
 
@@ -38,6 +39,10 @@ const HomeIndex = () => {
     }
 
     storeBlackOutDone = sessionStorage.getItem("blackOutDone");
+
+    if (storeBlackOutDone){
+      setBlackOutDone(value => !value);
+    }
 
   });
 
@@ -59,7 +64,7 @@ const HomeIndex = () => {
     <>
 
       {
-        !storeBlackOutDone
+        !blackOutDone
         &&
         <IntroShow setBlackOutDone={setBlackOutDone}/>
 
