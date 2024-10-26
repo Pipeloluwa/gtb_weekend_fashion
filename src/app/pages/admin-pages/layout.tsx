@@ -14,11 +14,12 @@ const AdminLayout:React.FC<IAdminLayout>= ({
 }: Readonly<{
   children: React.ReactNode;
 }>) =>  {
+  
   return (
     <div className={`${interFont.className} text-gray-800 bg-gray-50 w-screen h-screen flex overflow-hidden`}>
         <MenuComponent />
 
-        <main className="w-full h-full overflow-hidden overflow-y-scroll">
+        <main id="mainComponent" className="w-full h-full overflow-hidden overflow-y-scroll">
             <NavBarComponent />
             {children}
         </main>

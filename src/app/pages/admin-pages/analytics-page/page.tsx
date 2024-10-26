@@ -1,24 +1,11 @@
 "use client";
-import p1 from "../../assets/images/p1.jpeg";
-import { TiThMenu } from "react-icons/ti";
-import { IoClose } from "react-icons/io5";
-import { IoAddCircle } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Image from "next/image";
 import HistogramChartComponent from "@/app/components/admin-components/analytics-components/HistogramChartComponent";
-import DesktopMenuComponent from "@/app/components/admin-components/admin-shared-components/MenuComponent";
-import NavBarComponent from "@/app/components/admin-components/admin-shared-components/NavBarComponent";
-import MobileMenuComponent from "@/app/components/admin-components/admin-shared-components/MobileMenuComponent";
-import { interFont } from "@/app/fonts/fontsConfig";
-import { userAgent } from "next/server";
-import { setNavAdminValue } from "@/app/state_management/reducers/admin-reducers/navAdminValue";
+import { setNavAdminValue, setNavBackButton } from "@/app/state_management/reducers/admin-reducers/navAdminValue";
 import { useDispatch } from "react-redux";
 import RecentModelsComponent from "@/app/components/admin-components/analytics-components/RecentModelsComponent";
 import RecentDesignersComponent from "@/app/components/admin-components/analytics-components/RecentDesignersComponent";
 import PieChartComponent from "@/app/components/admin-components/analytics-components/PieChartComponent";
-import MenuComponent from "@/app/components/admin-components/admin-shared-components/MenuComponent";
 
 
 
@@ -77,7 +64,7 @@ const PageIndex= ()=> {
 
     useEffect(() => {
         dispatch(setNavAdminValue({action: "Analytics"}));
-     
+        dispatch(setNavBackButton({action: false}));
       });
     
 

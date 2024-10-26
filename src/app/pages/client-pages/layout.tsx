@@ -1,8 +1,8 @@
 "use client";
-import MenuComponent from "@/app/components/admin-components/admin-shared-components/MenuComponent";
-import NavBar from "@/app/components/client-components/client-shared-components/NavBarComponent";
-import { interFont, pacificoFont } from "@/app/fonts/fontsConfig";
-import { setNavBg, setNavBgManual } from "@/app/state_management/reducers/client-reducers/navBgState";
+import FooterComponent from "@/app/components/client-components/client-shared-components/FooterComponent";
+import NavBarComponent from "@/app/components/client-components/client-shared-components/NavBarComponent";
+import { pacificoFont } from "@/app/fonts/fontsConfig";
+import { setNavBg } from "@/app/state_management/reducers/client-reducers/navBgState";
 import { RootState } from "@/app/state_management/stores/store";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,15 +30,8 @@ const ClientLayout:React.FC<IClientLayout>= ({
       dispatch(setNavBg({scrollValue: parentDivRef.current?.scrollTop}));
     }
 
-    if (navValue !== "Home"){
-      parentDivRef.current && parentDivRef.current.removeEventListener('scroll', handleScroll);
-      dispatch(setNavBgManual({navValue: true}));
-    }
-
-    else{
-      if (parentDivRef.current){
-        parentDivRef.current.addEventListener('scroll', handleScroll) 
-      }
+    if (parentDivRef.current){
+      parentDivRef.current.addEventListener('scroll', handleScroll) 
     }
 
 
@@ -47,8 +40,9 @@ const ClientLayout:React.FC<IClientLayout>= ({
 
   return (
     <div ref={parentDivRef} className={`${pacificoFont.className} text-gray-800 h-svh overflow-hidden ${navValue !== "Enroll" && "overflow-y-scroll"}`}>
-        {navValue !== "Enroll" && <NavBar />}
+        {navValue !== "Enroll" && <NavBarComponent />}
         {children}
+        {!["Enroll","Highlights"].includes(navValue) && <FooterComponent />}
     </div>
   );
 }

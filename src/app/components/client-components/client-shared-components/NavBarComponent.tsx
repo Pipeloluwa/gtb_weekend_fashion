@@ -2,13 +2,12 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/state_management/stores/store';
-import { Button } from '@material-tailwind/react';
 import { rubikFont } from '../../../fonts/fontsConfig';
 import Link from 'next/link';
 import LogoComponent from './LogoComponent';
 
 
-const NavBar = () => {
+const NavBarComponent = () => {
     const navBgState= useSelector((state:RootState) => state.navBgState.value);
     const navValue= useSelector((state:RootState) => state.navValue.value);
     const [navValueLocal, setNavBgTypeLocal]= useState(navValue)
@@ -46,17 +45,13 @@ const NavBar = () => {
                         Home
                     </Link>
 
-                    <li className={`cursor-pointer ${navValueLocal=== 'About' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
+                    <Link href={"/pages/client-pages/about-page"} className={`cursor-pointer ${navValueLocal=== 'About' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
                         About
-                    </li>
+                    </Link>
 
-                    <li className={`cursor-pointer ${navValueLocal=== 'Apply' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
-                        Apply
-                    </li>
-
-                    <li className={`cursor-pointer ${navValueLocal=== 'Show' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
+                    <Link href={"/pages/client-pages/highlights-page"} className={`cursor-pointer ${navValueLocal=== 'Highlights' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
                         Highlights
-                    </li>
+                    </Link>
 
                     <Link href={"/pages/client-pages/feed-page"} className={`cursor-pointer ${navValueLocal=== 'Feeds' ? 'bg-white shadow-gray-500 text-orange-600 transition-colors duration-300 ease-linear': ''} hover:bg-orange-400 hover:text-white py-2 px-4 rounded-full`}>
                         Feeds
@@ -92,4 +87,4 @@ const NavBar = () => {
     );
 }
 
-export default NavBar
+export default NavBarComponent

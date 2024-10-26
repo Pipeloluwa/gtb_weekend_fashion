@@ -7,10 +7,11 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 interface IPaginationComponent{
     totalPageNo: number;
+    searchUrl: string;
 }
 
 
-const PaginationComponent:React.FC<IPaginationComponent>= ({totalPageNo})=> {
+const PaginationComponent:React.FC<IPaginationComponent>= ({totalPageNo, searchUrl})=> {
   const [active, setActive] = React.useState(1);
  
   const getItemProps = (index: number) =>
@@ -38,14 +39,14 @@ const PaginationComponent:React.FC<IPaginationComponent>= ({totalPageNo})=> {
   const pageElements=() => {
     const elements= [];
     for (let i = 0; i < totalPageNo; i++){
-        elements.push(<IconButton {...getItemProps(i+1)}>{i+1}</IconButton>);
+        elements.push(<IconButton key={`pagination${i}`} {...getItemProps(i+1)}>{i+1}</IconButton>);
     }
     return elements;
   }
 
  
   return (
-    <div className="flex items-center gap-4">
+    <div className="z-20 flex items-center gap-4 bg-white ">
       <Button
         variant="text"
         className="flex items-center gap-2 text-orange-800"

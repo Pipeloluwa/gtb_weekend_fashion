@@ -8,7 +8,7 @@ interface ISearchUrl{
 
 const SearchComponent:React.FC<ISearchUrl> = ({searchUrl}) => {
     return (
-        <div className="relative flex items-center w-full mx-auto">
+        <div className="relative mt-[20px]  flex items-center w-full mx-auto">
             <input type="text" placeholder="Search users" className="absolute border rounded-3xl p-4 pr-[145px] w-full sm:h-[53px] h-[40px] my-shadow-style sm:focus:pl-[68px] focus:pl-[40px] outline-orange-500 sm:pl-[64px] pl-[35px] sm:text-base text-sm"/>
 
             <FaSearch className="absolute left-0 sm:mx-[30px] mx-[12px] scale-[130%] text-gray-500"/>

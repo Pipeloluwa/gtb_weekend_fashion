@@ -1,22 +1,17 @@
 
 "use client";
 import { ChangeEvent, FormEventHandler, LegacyRef, useEffect, useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { Button, Dialog, DialogBody, Spinner, Select, Option, Input, Textarea } from '@material-tailwind/react';
 import { MdCancel, MdOutlineDone } from 'react-icons/md';
 
-import { interFont, pacificoFont, rubikFont } from '@/app/fonts/fontsConfig';
-import Image from 'next/image';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { pacificoFont, rubikFont } from '@/app/fonts/fontsConfig';
+import { useDispatch } from 'react-redux';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { BiArrowBack } from 'react-icons/bi';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import LogoComponent from '@/app/components/client-components/client-shared-components/LogoComponent';
 import { BsBoxArrowInUp } from 'react-icons/bs';
 import { setNavValue } from '@/app/state_management/reducers/client-reducers/navValue';
+import { IoArrowUndo } from 'react-icons/io5';
 
 
 
@@ -57,8 +52,7 @@ const PageIndex = () => {
             set_model_text('Upload your brand logo or brand picture');
         }
 
-        set_validation_text("")
-        return e;
+        set_validation_text("");
     }
 
 
@@ -138,9 +132,9 @@ const PageIndex = () => {
             <div className='w-[50%] h-full relative overflow-hidden bg-black'>
                 <img alt='' src={"/images/pictures/woman-6670772_1280.webp"} width={200} height={0}  className='w-full h-full object-cover opacity-[80%]' />
 
-                <div onClick={() => router.back()} className='h-[50px] w-[50px] absolute left-[25px] top-[25px] flex justify-center items-center cursor-pointer bg-white shadow-sm shadow-black rounded-full'>
-                    <BiArrowBack className='text-orange-800 size-[30px]'/>
-                </div>
+                <button onClick={() => router.back()} className='h-[50px] w-[50px] absolute left-[25px] top-[25px] flex justify-center items-center cursor-pointer bg-white shadow-sm shadow-black rounded-full'>
+                    <IoArrowUndo className='text-orange-800 size-[30px]'/>
+                </button>
             </div>
 
             <div className= 'overflow-hidden overflow-y-scroll gap-y-6 py-12 w-[60%] h-full flex flex-col items-center'>
@@ -175,14 +169,14 @@ const PageIndex = () => {
                     />
 
                     <Input 
-                        label="Phone Number format(+xxx xxxxxxxxxx)" ref= {emailRef} required type="tel" 
+                        label="Whatsapp Number format(+xxx xxxxxxxxxx)" ref= {emailRef} required type="tel" 
                         name="from_phone" color='orange' size='lg' 
                         pattern="\+[0-9]{1,3}[0-9]{10}"
                         className='bg-white px-4 py-6 shadow-sm shadow-gray-300'
                     />
 
                     <Input 
-                        label="Portfolio Link(s)" ref= {emailRef} required type="text" 
+                        label="Portfolio Link / Website" ref= {emailRef} required type="text" 
                         name="from_portfolio" color='orange' size='lg' 
                         className='bg-white px-4 py-6 shadow-sm shadow-gray-300'
                     />

@@ -7,56 +7,69 @@ import { useRef, useState } from "react";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { Button, IconButton } from "@material-tailwind/react";
 import DesignerShowcaseDialogComponent from "./DesignerShowcaseDialogComponent";
+import { IProduct, IProductsData, ISingleProductData } from "@/app/interfaces/shared-interfaces/ProductsInterfaces";
 
 
  
 const HomeSegmentComponent5=()=> {
 
-  const clothesCategoryData= [
-    {picture: "/images/pictures/woman-6670772_1280.webp", name: "Royal Apparel", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/woman-6771288_1280.webp", name: "Agbada", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/ai-generated-8195533_1280.webp", name: "Dandogo", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/AdobeStock_485804515.webp", name: "Siki", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/fashion-3080626_1280.webp", name: "Vintage", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/drake-s-takes-vKnRYW-mtek-unsplash.webp", name: "Versace", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}}
-  ];
-
-
-  const shoesCategoryData= [
-    {picture: "/images/pictures/shoes-1433925_1280.webp", name: "Akube Shoe", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/oxford-shoes-6078993_1280.webp", name: "Aba Shoe", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/mohammad-metri-E-0ON3VGrBc-unsplash.webp", name: "Adidas", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/malvestida-DMl5gG0yWWY-unsplash.webp", name: "Abibas", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/fashion-1284496_1280.webp", name: "Nike", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/domino-studio-164_6wVEHfI-unsplash.webp", name: "Puma", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/brogue-shoes-5983822_1280.webp", name: "Timberland", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/balancing-1868051_1280.webp", name: "Cover Shoe", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/allyson-johnson-lY3d_sIzBXg-unsplash.webp", name: "Flawless Leather", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}}
-  ];
-
-
-  const shoesAccessoriesCategoryData= [
-    {picture: "/images/pictures/accessory-3002608_1280.webp", name: "Oju Igo", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/male-watch-144648_1280.webp", name: "Adidas", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/cap-1662654_1280.webp", name: "Abibas", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/glasses-3965545_1280.webp", name: "Nike", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/male-watch-188780_1280.webp", name: "Puma", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/portrait-7676482_1280.webp", name: "Timberland", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/watch-140487_1280.webp", name: "Cover Shoe", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}},
-    {picture: "/images/pictures/time-3091031_1280.webp", name: "Flawless Leather", price: 10000000, vendor_details:{name: "Louious Vuitton", whatsapp_no: "923094824223", "website": "www.louious.com", social_handle: "louious@instagram.com"}}
-  ];
-
-  const [singleClothesCategoryData, setSingleClothesCategoryData]= useState({
-    picture: "/images/pictures/woman-6670772_1280.webp",
-    name: "Royal Apparel", 
-    price: 10000000, 
+  const clothesCategoryData: IProductsData= {
     vendor_details:{
-      name: "Louious Vuitton", 
-      whatsapp_no: "923094824223", 
-      website: "www.louious.com", 
-      social_handle: "louious@instagram.com"
-    }
-  });
+        name: "Louious Vuitton", 
+        whatsapp_no: "923094824223", 
+        emaiL: "jlwfhwelj@shlfjsd.sfsd",
+        portfolio_link: "www.louious.com",
+    },
+    products:[
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000}
+    ]
+     
+};
+
+
+  const shoesCategoryData: IProductsData= {
+    vendor_details:{
+        name: "Louious Vuitton", 
+        whatsapp_no: "923094824223", 
+        emaiL: "jlwfhwelj@shlfjsd.sfsd",
+        portfolio_link: "www.louious.com",
+    },
+    products:[
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000}
+    ]
+     
+};
+
+
+  const shoesAccessoriesCategoryData: IProductsData= {
+    vendor_details:{
+        name: "Louious Vuitton", 
+        whatsapp_no: "923094824223", 
+        emaiL: "jlwfhwelj@shlfjsd.sfsd",
+        portfolio_link: "www.louious.com",
+    },
+    products:[
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000},
+        {picture: "/images/pictures/woman-6670772_1280.webp",name: "Royal Apparel", price: 10000000}
+    ]
+     
+};
+
+  const [singleClothesCategoryData, setSingleCategoryData]= useState<ISingleProductData>();
 
   const [dialogState, setDialogState]= useState(false);
 
@@ -65,13 +78,51 @@ const HomeSegmentComponent5=()=> {
   const sliderCapSpecRef = useRef<Slider|null>(null);
 
 
+  const showSingleProductDialog= (item: IProduct, productType: string) => {
+    switch (productType){
+      case "cloth":
+        setSingleCategoryData(
+          {
+            vendor_details: {...clothesCategoryData.vendor_details},
+            product: {...item}
+
+          } as ISingleProductData
+        ); 
+        setDialogState(true);
+
+      case "shoe":
+        setSingleCategoryData(
+          {
+            vendor_details: {...clothesCategoryData.vendor_details},
+            product: {...item}
+
+          } as ISingleProductData
+        ); 
+        setDialogState(true);
+      
+        case "accesory":
+          setSingleCategoryData(
+            {
+              vendor_details: {...clothesCategoryData.vendor_details},
+              product: {...item}
+
+            } as ISingleProductData
+          ); 
+          setDialogState(true);
+    }
+  }
+  
 
   
   return (
 
     <div className='flex flex-col justify-center items-center w-[75%] mx-auto gap-y-6'>
       
-      <DesignerShowcaseDialogComponent singleClothesCategoryData={singleClothesCategoryData} dialogState={dialogState} setDialogState={setDialogState}/>
+      {
+        dialogState
+        &&
+        <DesignerShowcaseDialogComponent singleClothesCategoryData={singleClothesCategoryData!} dialogState={dialogState} setDialogState={setDialogState}/>
+      }
       
       
       <h1 className='text-5xl tracking-widest text-orange-800'>
@@ -110,12 +161,12 @@ const HomeSegmentComponent5=()=> {
               className="w-[85%] h-full flex justify-center items-center overflow-hidden rounded-3xl"
             >
               {
-                    clothesCategoryData.map((item, index) => {
+                    clothesCategoryData.products.map((item, index) => {
                         return (
                             <div key={`inspirationalKey${index}`} className='overflow-hidden h-[320px] w-[350px] flex justify-center items-center'>
                                 
                                 <div key={`inspirationalKey${index}`} className='relative overflow-hidden h-[300px] w-[90%] mx-auto flex items-center bg-gray-500 rounded-3xl shadow-md drop-shadow-lg shadow-gray-800'>
-                                  <Image quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
+                                  <Image priority={true} quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
                                   </Image>
 
                                   <div className='absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center gap-y-2 p-4 from-black/5 to-gray-800 bg-gradient-to-b'>
@@ -127,7 +178,7 @@ const HomeSegmentComponent5=()=> {
                                           {item.price.toLocaleString()}
                                       </p>
 
-                                      <Button onClick={() => {setSingleClothesCategoryData(item); setDialogState(true);}} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`} >
+                                      <Button onClick={() => showSingleProductDialog(item, "cloth")} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`} >
                                           {"Get Now"}
                                       </Button>
 
@@ -179,12 +230,12 @@ const HomeSegmentComponent5=()=> {
               className="w-[85%] h-full flex justify-center items-center overflow-hidden rounded-3xl"
             >
               {
-                    shoesCategoryData.map((item, index) => {
+                    shoesCategoryData.products.map((item, index) => {
                         return (
                             <div key={`shoesCategoryKey${index}`} className='overflow-hidden h-[320px] w-[350px] flex justify-center items-center'>
                                 
                                 <div key={`shoesCategoryKey${index}`} className='relative overflow-hidden h-[300px] w-[90%] mx-auto flex items-center bg-gray-500 rounded-3xl shadow-md drop-shadow-lg shadow-gray-800'>
-                                  <Image quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
+                                  <Image priority={true} quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
                                   </Image>
 
                                   <div className='absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center gap-y-2 p-4 from-black/5 to-gray-800 bg-gradient-to-b'>
@@ -196,7 +247,7 @@ const HomeSegmentComponent5=()=> {
                                           {item.price.toLocaleString()}
                                       </p>
 
-                                      <Button onClick={() => {setSingleClothesCategoryData(item); setDialogState(true);}} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`}>
+                                      <Button onClick={() => showSingleProductDialog(item, "shoe")} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`}>
                                           {"Get Now"}
                                       </Button>
 
@@ -248,12 +299,12 @@ const HomeSegmentComponent5=()=> {
               className="w-[85%] h-full flex justify-center items-center overflow-hidden rounded-3xl"
             >
               {
-                    shoesAccessoriesCategoryData.map((item, index) => {
+                    shoesAccessoriesCategoryData.products.map((item, index) => {
                         return (
                             <div key={`shoesAccessoriesKey${index}`} className='overflow-hidden h-[320px] w-[350px] flex justify-center items-center'>
                                 
                                 <div key={`shoesAccessoriesKey${index}`} className='relative overflow-hidden h-[300px] w-[90%] mx-auto flex items-center bg-gray-500 rounded-3xl shadow-md drop-shadow-lg shadow-gray-500'>
-                                  <Image quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
+                                  <Image priority={true} quality={100} alt='picture' src={item.picture} width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
                                   </Image>
 
                                   <div className='absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center gap-y-2 p-4 from-black/5 to-gray-800 bg-gradient-to-b'>
@@ -265,7 +316,7 @@ const HomeSegmentComponent5=()=> {
                                           {item.price.toLocaleString()}
                                       </p>
 
-                                      <Button onClick={() => {setSingleClothesCategoryData(item); setDialogState(true);}} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`} >
+                                      <Button onClick={() => showSingleProductDialog(item, "accessory")} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-orange-700/80 small-button sm:hover:bg-[#f0f0f0] sm:hover:text-orange-800 sm:hover:transition-colors hover:ease-linear sm:hover:duration-500`} >
                                           {"Get Now"}
                                       </Button>
 

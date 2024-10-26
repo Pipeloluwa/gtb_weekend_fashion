@@ -6,14 +6,26 @@ import { IoArrowUndo } from "react-icons/io5";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import { setCollapseMenuState } from "@/app/state_management/reducers/admin-reducers/collapseMenuState";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/state_management/stores/store";
+import { BiArrowBack } from "react-icons/bi";
+import { useRouter } from "next/navigation";
+
 
 
 
 const NavBarComponent= ()=> {
+    const router = useRouter();
     const dispatch= useDispatch();
+    const navAdminValue= useSelector((state:RootState) => state.navAdminValue.value);
+    const backButtonState= useSelector((state:RootState) => state.navAdminValue.backButtonState);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const mobileMenu= false;
+
+    
+    useEffect(() => {
+        document.getElementById("mainComponent")?.scrollTo(0,0);
+    }, [navAdminValue]);
 
 
     {/* ++++++++++++++++++++++ HEADER +++++++++++++++++ */}
@@ -25,13 +37,14 @@ const NavBarComponent= ()=> {
 
 
             <div className='flex items-center gap-x-4 md:w-full py-2 lg:px-16 sm:px-10 px-3'>
-                {/* <button className='border p-[4px] rounded-full bg-black/20 hover:bg-white my-shadow-style'>
-                    <IoArrowUndo className='sm:size-[25px]'/>
-                </button> */}
+
+                <button onClick={() => router.back()} className={`${backButtonState ? "visible" : "invisible"} flex mr-8 h-[40px] w-[45px] justify-center items-center cursor-pointer bg-white shadow-sm shadow-black rounded-full`}>
+                    <IoArrowUndo className='text-orange-800 size-[25px]'/>
+                </button>  
 
   
                 <div className=" md:flex hidden flex-row justify-between items-center w-full border-0 ">  
-                    <h1 className=" font-bold text-2xl scale-100">{"Analytics"}</h1>
+                    <h1 className=" font-bold text-2xl scale-100">{navAdminValue}</h1>
 
                     <div className="flex items-center space-x-4 scale-100 ">
                         <div className="w-10 h-10 my-picture-style">

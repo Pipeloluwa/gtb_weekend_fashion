@@ -1,20 +1,10 @@
 'use client';
-import NavBar from '@/app/components/client-components/client-shared-components/NavBarComponent';
 import React, { useEffect, useRef, useState } from 'react';
-import Countdown from 'react-countdown';
-import HomeSegment1 from '../../../components/client-components/home-components/HomeSegmentComponent1';
-import IntroShow from '../../../components/client-components/home-components/IntroShowComponent';
-import HomeSegment2 from '../../../components/client-components/home-components/HomeSegmentComponent2';
 import { useDispatch } from 'react-redux';
 import { setNavBg } from '@/app/state_management/reducers/client-reducers/navBgState';
-import { pacificoFont } from '@/app/fonts/fontsConfig';
-import HomeSegment3 from '../../../components/client-components/home-components/HomeSegmentComponent3';
-import HomeSegment4 from '../../../components/client-components/home-components/HomeSegmentComponent4';
-import Footer from '@/app/components/client-components/client-shared-components/FooterComponent';
 import HomeSegment5 from '../../../components/client-components/home-components/HomeSegmentComponent5';
-import HomeSegment6 from '../../../components/client-components/home-components/HomeSegmentComponent6';
 import HomeSegment7 from '../../../components/client-components/home-components/HomeSegmentComponent7';
-import HomeSegment8 from '../../../components/client-components/home-components/HomeSegmentComponent8';
+import HomeSegment8, { IEmbeddedSource } from '../../../components/client-components/home-components/HomeSegmentComponent8';
 import { setNavValue } from '@/app/state_management/reducers/client-reducers/navValue';
 
 
@@ -49,12 +39,12 @@ const HomeIndex = () => {
     picture: "/images/pictures/7.webp"
   }
   
-  
+  const mapSource: IEmbeddedSource= {
+    source: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.749130469827!2d3.4218632747320425!3d6.42626872428615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53227d3261b%3A0x66efbe21b1b35843!2sEko%20Hotel!5e0!3m2!1sen!2sng!4v1728141670808!5m2!1sen!2sng"
+  }
 
   return (
     <>
-      
-      {/* <NavBar /> */}
 
       {/* {
         !blackOutDone
@@ -85,11 +75,9 @@ const HomeIndex = () => {
 
             {/* <HomeSegment6 /> */}
 
-            <HomeSegment8 />
+            <HomeSegment8 source={mapSource.source}/>
 
             <HomeSegment7 />
-
-            <Footer />
 
             
           </>

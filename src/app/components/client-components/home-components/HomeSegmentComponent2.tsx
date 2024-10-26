@@ -23,7 +23,6 @@ const HomeSegmentComponent2 = () => {
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
                     className='flex w-full h-full '
                     >
-
                     </iframe>
             </div>
 

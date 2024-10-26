@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri';
-// import DialogFormViewComponent from '../enrollments-component/designers-components/DialogFormViewComponent';
 import PromptComponent from '@/app/components/shared-components/PromptComponent';
 import SuccessComponent from '@/app/components/shared-components/SuccessComponent';
-import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogFormData';
+import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogDataInterface';
+import { Select, Option } from '@material-tailwind/react';
 
 
 
@@ -39,6 +39,7 @@ const UserFormsComponents:React.FC<IDesignerUsers> = ({userData, tabType, Dialog
     const [singleUserData, setSingleDesignerData]= useState<ISingleDesignerData | null>(null);
     const [dialogState, setDialogState]= useState<boolean>(false);
     const [selectEmail, setSelectEmail] = useState<string[]>([]);
+    const [dateFilter, setDateFilter] = useState<string>("2024");
 
     const singleSelectEmailFunction= (event: React.ChangeEvent<HTMLInputElement>)=> {
         const {value, checked}= event.currentTarget;
@@ -120,11 +121,26 @@ const UserFormsComponents:React.FC<IDesignerUsers> = ({userData, tabType, Dialog
                     </div>
 
                     <div className='flex gap-x-10'>
-                        <button disabled={selectEmail.length=== 0} className={`${selectEmail.length=== 0 ? "opacity-35 cursor-not-allowed" : "hover:bg-white/75 hover:text-orange-800"} bg-orange-800 text-white rounded-3xl my-shadow-style sm:px-8 px-5 sm:py-2 py-1 font-bold `}>
+                        <div>
+                            <Select 
+                                variant='static'
+                                value={dateFilter}
+                                onChange={value => setDateFilter(preValue => value ? value : preValue)}
+                                color='orange' size='md'
+                                className='bg-white shadow-sm shadow-gray-300 my-0 py-0 pr-4' 
+                            >
+                                <Option value='2024'>{"2024"}</Option>
+                                <Option value='2023'>{"2023"}</Option>
+                                <Option value='2022'>{"2022"}</Option>
+                            </Select>
+                        </div>
+
+
+                        <button disabled={selectEmail.length=== 0} className={`${selectEmail.length=== 0 ? "opacity-35 cursor-not-allowed" : "hover:bg-white/75 hover:text-orange-800"} bg-orange-800 text-white rounded-3xl my-shadow-style sm:px-8 px-5 py-1 font-bold `}>
                             Add to selection
                         </button>
 
-                        <button onClick={() => confirmDeleteSelectedForm()} disabled={selectEmail.length=== 0} className={`${selectEmail.length=== 0 ? "opacity-35 cursor-not-allowed" : "hover:bg-white/75 hover:text-red-500"} bg-red-500 text-white rounded-3xl my-shadow-style sm:px-8 px-5 sm:py-2 py-1 font-bold `}>
+                        <button onClick={() => confirmDeleteSelectedForm()} disabled={selectEmail.length=== 0} className={`${selectEmail.length=== 0 ? "opacity-35 cursor-not-allowed" : "hover:bg-white/75 hover:text-red-500"} bg-red-500 text-white rounded-3xl my-shadow-style sm:px-8 px-5 py-1 font-bold `}>
                             Delete
                         </button>
                     </div>
@@ -163,17 +179,17 @@ const UserFormsComponents:React.FC<IDesignerUsers> = ({userData, tabType, Dialog
 
 
                             <div className='text-center md:mt-0 mt-3 '>
-                                Reg Date: {item.created.toDateString()}
+                                {`Reg Date: ${item.created.toDateString()}`}
                             </div>
 
 
                             <div className="flex items-center gap-x-6 md:w-fit w-full">
                                 <button onClick={() => singleUserDataFunction(item.email)} className="my-shadow-style md:w-fit w-full py-2 cursor-pointer flex md:justify-start justify-center md:items-start items-center px-6 bg-white md:mt-0 mt-2 rounded-3xl border border-gray-300 hover:bg-orange-800 hover:border hover:border-white hover:text-white h-[60px] md:h-fit">
-                                    Add to selection
+                                    {"Add to selection"}
                                 </button>
 
                                 <button onClick={() => singleUserDataFunction(item.email)} className="my-shadow-style md:w-fit w-full py-2 cursor-pointer flex md:justify-start justify-center md:items-start items-center px-6 bg-white md:mt-0 mt-2 rounded-3xl border border-gray-300 hover:bg-orange-800 hover:border hover:border-white hover:text-white h-[60px] md:h-fit">
-                                    View Form
+                                    {"View Form"}
                                 </button>
 
                                 <RiDeleteBinLine onClick={() => confirmDeleteForm(item.email)} className="hover:bg-gray-300 rounded-full text-red-700 md:flex scale-[150%] cursor-pointer"/>

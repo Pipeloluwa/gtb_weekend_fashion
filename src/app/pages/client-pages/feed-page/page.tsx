@@ -1,431 +1,48 @@
 
 "use client";
-import { interFont, pacificoFont, rubikFont } from '@/app/fonts/fontsConfig';
-import NavBar from '@/app/components/client-components/client-shared-components/NavBarComponent';
-import { inView } from "framer-motion";
-import { setNavBg, setNavBgManual } from '@/app/state_management/reducers/client-reducers/navBgState';
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { setYoutubeState } from '@/app/state_management/reducers/client-reducers/youtubeApiState';
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import { rubikFont } from '@/app/fonts/fontsConfig';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-import { AnimatePresence, motion } from 'framer-motion';
-import { BiChevronDown, BiChevronUp, BiSolidDislike, BiSolidLike } from 'react-icons/bi';
-import { FaEye } from 'react-icons/fa';
-import { Button, Collapse } from '@material-tailwind/react';
 import { setNavValue } from '@/app/state_management/reducers/client-reducers/navValue';
-
-interface IVideoItem {
-  id: { videoId: string };
-  snippet: { title: string; description: string };
-}
+import ImageListComponent from '@/app/components/client-components/about-components/ImageListComponent';
+import FeedListComponent from '@/app/components/client-components/feed-component/FeedListComponent';
 
 
-interface ICommentDataBase {
-  snippet: {
-    topLevelComment: {
-      snippet: {
-        textDisplay: string;
-      };
-    };
-  };
-}
-
-
-interface ICommentData{
-  [key:string]: ICommentDataBase[];
-}
-
-
-
-interface IDescriptionDataBase {
-  snippet: {
-    description: string
-  }
-}
-
-
-interface IDescriptionData {
-  [key:string]: IDescriptionDataBase;
-}
 
 
 
 
 const PageIndex = () => {
-
-  const parentDivRef :React.MutableRefObject<HTMLDivElement | null>= useRef(null);
   const dispatch= useDispatch();
-
-  const lastVideoId: React.MutableRefObject<HTMLDivElement | null>= useRef(null);
-
-
-  const data= [
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "My worst ever date on Grilling was... | Chatty Patty with Michelle", description: "ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grilling was.ever date on Grillingever date on Grilling was.ever date on Grilling was.ever date on Grilling was. was.Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    },
-    {
-      id: {videoId: "/videos/landingPageVideoCut.mp4"},
-      snippet: {title: "Title", description: "Description"},
-      statistics: {
-        viewCount: "50",
-        likeCount: "10",
-        dislikeCount: "30"
-      }
-    }
-  ]
-
-
-  const [videos, setVideos] = useState<IVideoItem[]>([]);
-  const [nextPageToken, setNextPageToken] = useState(null);
-  const channelId= "UCPTp1DKGYEyUDjdjA_p1tbQ";
-  const youtubeApiKey= "AIzaSyCcbmgZJVVRWWsknqQQNdsULT18V1PVFD4";
-
-  const [activeVideoDescription, setActiveVideoDescription]= useState<IDescriptionData>({});
-  const [activeVideoComment, setActiveVideoComment]= useState<ICommentData>({});
-
 
   
   useEffect(() => {
     dispatch(setNavValue({action: "Feeds"}));
-  });
-
-  useEffect(() => {
-    if (lastVideoId.current){
-      inView(lastVideoId.current, () => {
-        loadMoreVideos();
-      });
-    }
-  }, [lastVideoId.current]);
-
-
-
-useEffect(() => {
-    fetchVideos();
-}, []);
+  }, []);
 
 
 
 
-  const fetchVideos = async () => {
-    try {
-      const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&order=date&maxResults=10&key=${youtubeApiKey}${   
+  const images= [
+    '/images/pictures/1.webp',
+    '/images/pictures/2.webp',
+    '/images/pictures/3.webp'
+  ]
 
-          nextPageToken ? `&pageToken=${nextPageToken}` : ''
-        }`
-      );
-
-      const newVideos = response.data.items;
-
-      setVideos([...videos, ...newVideos]);
-      setNextPageToken(response.data.nextPageToken);
-      dispatch(setYoutubeState({stateValue: true}));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
-  const fetchSingleVideo= async (videoId: string) => {
-    if (!activeVideoDescription[videoId]){
-      const response = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${youtubeApiKey}`
-      );
-      setActiveVideoDescription(values => ({...values, [videoId]: response.data?.items[0]?.snippet?.description}));
-      return;
-    }
-
-    const changedValues: IDescriptionData= activeVideoDescription;
-    delete changedValues[videoId];
-    setActiveVideoDescription({...changedValues});
-    
-  }
-
-
-  const commentDataFunction= async (videoId: string) => {
-    try {
-      if (!activeVideoComment[videoId]){
-        const response = await axios.get(
-          `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${youtubeApiKey}&textFormat=plainText`
-        );
-        setActiveVideoComment(values => ({...values, [videoId]: response.data?.items}));
-        return;
-      }
-
-      const changedValues: ICommentData= activeVideoComment;
-      delete changedValues[videoId];
-      setActiveVideoComment({...changedValues});
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-
-  const loadMoreVideos = () => {
-    if (nextPageToken) {
-      fetchVideos();
-    }
-  };
-
+  const content= `Stay Connected in Real-Time! Dive into our Live Social Feed to catch up on the latest updates, trending stories, and engaging conversations. Join the community, share your thoughts, and be a part of the buzz!`
 
   
   return (
-    <div className='mt-10 gap-y-6 flex flex-col'>
+    <div className={`${rubikFont.className} -mt-[80px] gap-y-6 flex flex-col`}>
 
-      <h1 className={`${pacificoFont.className} text-orange-800 text-5xl tracking-widest flex w-full justify-center`}>
-        {"Live Social Feeds"}
-      </h1>
-
-      <p className={`${rubikFont.className} w-[60%] mx-auto text-center`}>
-          {"Keep updated right here and watch us!"}
-      </p>
+      <ImageListComponent title='Live Social Feeds' content={content} images={images}/>
 
 
-      <div className='mt-6 w-[75%] mx-auto'>
-
-        <div className='flex flex-col gap-y-24'>
-          {
-            videos.length== 0
-            ? 
-              <div className=' flex flex-col gap-y-24'>
-                <div className='aspect-video bg-gray-300 animate-pulse' />
-                <div className='aspect-video bg-gray-300 animate-pulse' />
-                <div className='aspect-video bg-gray-300 animate-pulse' />
-              </div>
-            
-          
-            :
-            videos.map((video, index) => (
-              index === videos.length-1
-              ?
-
-              <div ref= {lastVideoId} key={video.id.videoId} className='flex flex-col gap-y-5' >
-                {/* <video src={video.id.videoId}  className='aspect-auto shadow-md drop-shadow-lg shadow-gray-800'>
-
-                </video> */}
-
-                <LiteYouTubeEmbed id={video.id.videoId.toString()} title= {video.snippet.title.toString()}/>
-                <div className='w-full flex flex-col items-start gap-y-4'>
-
-                  <div className='w-full flex sm:flex-row flex-col items-center justify-between p-3 shadow-sm shadow-gray-300'>
-                    <h2 className='text-xl font-bold'>{video.snippet.title}</h2>
-                  </div>
-
-                
-                  <div className='w-full flex flex-col gap-y-2'>
-                    <div>
-                        <span>
-                          {
-                            activeVideoDescription[video.id.videoId]
-                            ? `${activeVideoDescription[video.id.videoId]}`
-
-                            : `${video.snippet.description}`
-                          }
-                        </span>
-                        
-                        <button onClick={() => fetchSingleVideo(video.id.videoId)} className='pl-3 text-orange-800'>
-                          {
-                            activeVideoDescription[video.id.videoId]
-                            ? "Collapse"
-
-                            : "Read more..."
-                          }
-                      </button>
-                    </div>
-
-
-                    <Button 
-                      onClick={() =>  commentDataFunction(video.id.videoId)} 
-                      className={`border ${activeVideoComment[video.id.videoId] ? "border-orange-800" : "border-gray-300"} p-2 bg-gray-100 text-orange-800 flex justify-between items-center`}  >
-                      
-                      <span className={`${rubikFont.className} tracking-widest`}>
-                          {"View All Comments"}
-                      </span>
-
-                      <span>
-                        {
-                          activeVideoComment[video.id.videoId]
-                          ? <BiChevronUp className='size-[30px]'/>
-
-                          : <BiChevronDown className='size-[30px]'/>
-                        }
-                      </span>
-
-                    </Button>
-
-                  </div>
-
-
-                  {
-                    activeVideoComment[video.id.videoId]
-                    &&
-                    <AnimatePresence>
-                        <motion.div initial={{y: -50}} animate={{y:0}}  key={`${video.id.videoId}motion`} className={`${interFont.className} text-gray-800 text-sm ml-8 flex flex-col gap-y-3`}>
-                          {
-                            activeVideoComment[video.id.videoId].map((comment, index) => 
-                              <p key={`comment${index}`} className='border-b border-gray-300 pb-2'>
-                                {comment.snippet.topLevelComment.snippet.textDisplay.toString()}
-                              </p>
-                            )
-                          }
-                          
-                        </motion.div>
-                    </AnimatePresence>
-                  }
-
-
-                </div>
-                
-                
-              </div>
-
-
-
-
-              
-              :
-              <div key={video.id.videoId} className='flex flex-col gap-y-5' >
-                {/* <video src={video.id.videoId}  className='aspect-auto shadow-md drop-shadow-lg shadow-gray-800'>
-
-                </video> */}
-
-                <LiteYouTubeEmbed id={video.id.videoId.toString()} title= {video.snippet.title.toString()}/>
-                <div className='w-full flex flex-col items-start gap-y-4'>
-
-                  <div className='w-full flex sm:flex-row flex-col items-center justify-between p-3 shadow-sm shadow-gray-300'>
-                    <h2 className='text-xl font-bold'>{video.snippet.title}</h2>
-                  </div>
-
-                
-                  <div className='w-full flex flex-col gap-y-2'>
-                    <div>
-                        <span>
-                          {
-                            activeVideoDescription[video.id.videoId]
-                            ? `${activeVideoDescription[video.id.videoId]}`
-
-                            : `${video.snippet.description}`
-                          }
-                        </span>
-                        
-                        <button onClick={() => fetchSingleVideo(video.id.videoId)}  className='pl-3 text-orange-800'>
-                          {
-                            activeVideoDescription[video.id.videoId]
-                            ? "Collapse"
-
-                            : "Read more..."
-                          }
-                      </button>
-                    </div>
-
-
-                    <Button 
-                      onClick={() =>  commentDataFunction(video.id.videoId)} 
-                      className={`border ${activeVideoComment[video.id.videoId] ? "border-orange-800" : "border-gray-300"} p-2 bg-gray-100 text-orange-800 flex justify-between items-center`}  >
-                      
-                      <span className={`${rubikFont.className} tracking-widest`}>
-                          {"View All Comments"}
-                      </span>
-
-                      <span>
-                        {
-                          activeVideoComment[video.id.videoId]
-                          ? <BiChevronUp className='size-[30px]'/>
-
-                          : <BiChevronDown className='size-[30px]'/>
-                        }
-                      </span>
-                    </Button>
-
-                  </div>
-
-                  {
-                    activeVideoComment[video.id.videoId]
-                    &&
-                    <AnimatePresence>
-                        <motion.div initial={{y: -50}} animate={{y:0}} key={`${video.id.videoId}motion`}  className={`${interFont.className} text-gray-800 text-sm ml-8 flex flex-col gap-y-3`}>
-                          {
-                            activeVideoComment[video.id.videoId].map((comment, index) => 
-                              <p key={`comment${index}`} className='border-b border-gray-300 pb-2'>
-                                {comment.snippet.topLevelComment.snippet.textDisplay.toString()}
-                              </p>
-                            )
-                          }
-                          
-                        </motion.div>
-                    </AnimatePresence>
-                  }
-
-                </div>
-
-                
-                
-              </div>
-            ))
-          }
-
-
-        </div>
+      <div className='w-[75%] mx-auto'>
+        <FeedListComponent />
 
       </div>
-
-
-      {/* <iframe src="https://widget.tagembed.com/2131509" className='w-full h-[600px] border-none'>
-      </iframe> */}
 
     </div>
   );

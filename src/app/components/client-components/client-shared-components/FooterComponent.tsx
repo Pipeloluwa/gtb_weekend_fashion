@@ -11,7 +11,7 @@ import { motion, useInView } from 'framer-motion';
 import { cardVariantsUp4 } from "../../../animations/framerAnimation/variants";
 import { rubikFont } from "../../../fonts/fontsConfig";
 
-const Footer= () =>{
+const FooterComponent= () =>{
     const ref= useRef(null);
     const inView = useInView(ref, {amount:0.25, once:true});
 
@@ -21,7 +21,7 @@ const Footer= () =>{
         ref={ref}
         initial= {{visibility: 'hidden'}}
         whileInView={{visibility: 'visible'}} 
-        className={`${rubikFont.className} py-16 w-full mx-auto grid lg:grid-cols-3 text-white  bg-gradient-to-b from-gray-900 to-black`}>
+        className={`${rubikFont.className} mt-32 py-16 w-full mx-auto grid lg:grid-cols-3 text-white  bg-gradient-to-b from-gray-900 to-black`}>
             
             <div className="mx-4">
                 <motion.h1 
@@ -110,4 +110,4 @@ const Footer= () =>{
     );
 }
 
-export default Footer;
+export default FooterComponent;

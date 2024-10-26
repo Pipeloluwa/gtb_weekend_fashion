@@ -21,6 +21,14 @@
   background-color: #100C08;
 }
 
+.grid-designer{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Fully responsive columns */
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+}
+
 @layer components {
   .orange-gradient-color{
     @apply from-[#fd6d2f] to-[#a53100]/60 bg-gradient-to-b 
@@ -45,6 +53,10 @@
 
   .my-button-style{
     @apply cursor-pointer flex justify-center items-center text-[18px] sm:px-6 px-4 text-white font-bold bg-orange-800 mt-6 md:py-3 sm:py-2 h-[60px] md:h-fit rounded-xl border border-white hover:bg-white hover:border hover:border-orange-800 hover:text-orange-800;
+  }
+
+  .my-small-button-style{
+    @apply cursor-pointer flex justify-center items-center text-[14px] sm:py-2 px-4 h-[60px] md:h-fit font-bold rounded-xl;
   }
 
   .my-button-border-style{

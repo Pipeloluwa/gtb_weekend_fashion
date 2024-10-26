@@ -16,7 +16,7 @@ const HomeSegmentComponent6 = () => {
 
 
             <div className={`${rubikFont.className} relative flex flex-col items-center h-[500px] w-full bg-gray-100`}>
-                <Image quality={100} alt='picture' src="/images/pictures/sunglasses-1284255_1280.jpg" width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
+                <Image priority={true} quality={100} alt='picture' src="/images/pictures/sunglasses-1284255_1280.jpg" width={350} height={300} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
                 </Image>
 
 

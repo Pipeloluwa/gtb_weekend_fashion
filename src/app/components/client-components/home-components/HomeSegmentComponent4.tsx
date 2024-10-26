@@ -31,7 +31,7 @@ const HomeSegmentComponent4:React.FC<IHomeSegmentComponent4> = ({ days, hours, m
 
 
             <div className={`${rubikFont.className} relative h-[400px] w-full overflow-hidden flex flex-col justify-center items-center border shadow-lg shadow-gray-500`}>
-                <Image alt='background image' src={countDownData.picture} width={500} height={500} className='absolute left-0 right-0 top-0 bottom-0 flex h-full w-full object-cover opacity-90'>
+                <Image priority={true} alt='background image' src={countDownData.picture} width={500} height={500} className='absolute left-0 right-0 top-0 bottom-0 flex h-full w-full object-cover opacity-90'>
                 </Image>
 
                 <div className='bg-gradient-to-b from-transparent to-black absolute left-0 right-0 top-0 bottom-0'/>

@@ -2,20 +2,11 @@ import { Dispatch, SetStateAction } from 'react';
 import { Dialog, DialogBody } from '@material-tailwind/react';
 import { rubikFont } from '@/app/fonts/fontsConfig';
 import Image from 'next/image';
+import { ISingleProductData } from '@/app/interfaces/shared-interfaces/ProductsInterfaces';
 
 
 interface IShowcaseData {
-    singleClothesCategoryData: {
-        picture: string,
-        name: string, 
-        price: number, 
-        vendor_details:{
-            name: string, 
-            whatsapp_no: string, 
-            website: string, 
-            social_handle: string
-        }
-    };
+    singleClothesCategoryData: ISingleProductData;
 
     dialogState: boolean;
     setDialogState: Dispatch<SetStateAction<boolean>>;
@@ -37,16 +28,16 @@ const DesignerShowcaseDialogComponent:React.FC<IShowcaseData>= ({singleClothesCa
                 <DialogBody className={`${rubikFont.className} tracking-widest flex flex-col gap-y-3 w-full items-center justify-center text-white`}>
                     
                     <div className='relative overflow-hidden h-[300px] w-full mx-auto flex items-center bg-gray-500 rounded-3xl shadow-md drop-shadow-lg shadow-gray-600'>
-                        <Image quality={100} alt='picture' src={singleClothesCategoryData.picture} width={350} height={400} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
+                        <Image quality={100} alt='picture' src={singleClothesCategoryData.product.picture} width={350} height={400} className='absolute top-0 bottom-0 left-0 right-0 flex w-full h-full object-cover'>
                         </Image>
 
                         <div className='absolute bottom-0 left-0 right-0 flex flex-col gap-y-2 p-4 from-black/5 to-gray-800 bg-gradient-to-b'>
                             <p className="text-sm text-white tracking-widest">
-                                {singleClothesCategoryData.name}
+                                {singleClothesCategoryData.product.name}
                             </p>
 
                             <p className='text-lg text-white tracking-widest'>
-                                {singleClothesCategoryData.price.toLocaleString()}
+                                {singleClothesCategoryData.product.price.toLocaleString()}
                             </p>
 
                         </div>
@@ -61,17 +52,12 @@ const DesignerShowcaseDialogComponent:React.FC<IShowcaseData>= ({singleClothesCa
                         </h1>
 
                         <h1 className='flex w-full justify-between'>
-                            WEBSITE: <span>{singleClothesCategoryData.vendor_details.website}</span>
+                            WEBSITE: <span>{singleClothesCategoryData.vendor_details.portfolio_link}</span>
                         </h1>
 
                         <h1 className='flex w-full justify-between'>
                             PHONE NO: <span>{singleClothesCategoryData.vendor_details.whatsapp_no}</span>
                         </h1>
-
-                        <h1 className='flex w-full justify-between'>
-                            SOCIAL: <span>{singleClothesCategoryData.vendor_details.social_handle}</span>
-                        </h1>
-
 
                         <a target='_blank' rel='noopener noreferrer' href={`https://wa.me/${singleClothesCategoryData.vendor_details.whatsapp_no}`} onClick={() => {}} className={`${rubikFont.className} rounded-3xl flex w-full justify-center items-center tracking-widest text-[15px] bg-white small-button text-orange-800`}>
                             Contact Whatsapp No

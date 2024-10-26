@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Dialog, DialogBody, Input, Select, Textarea, Option } from '@material-tailwind/react';
+import { Dialog, DialogBody, Input, Textarea } from '@material-tailwind/react';
 import { rubikFont } from '@/app/fonts/fontsConfig';
 import Image from 'next/image';
-import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogFormData';
+import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogDataInterface';
 
 
 const DesignerDialogFormComponent:React.FC<IDialogFormData>= ({singleUserData, dialogState, setDialogState}) => {

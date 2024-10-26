@@ -77,7 +77,7 @@ const IntroShowComponent: React.FC<ILogoScaleProps> = ({setBlackOutDone}) => {
                             transition={{duration:1}}
                             onAnimationComplete={() => {setLogoScale(value => !value); setBlackOut(value => !value);}}
                         >
-                            <Image alt='logo' src={"/images/logos/gtco_logo.png"} width={100} height={100}>
+                            <Image priority={true} alt='logo' src={"/images/logos/gtco_logo.png"} width={100} height={100}>
 
                             </Image>
                         </motion.div>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { Tabs, TabsHeader, Tab, TabsBody, TabPanel } from '@material-tailwind/react';
 import UserFormsComponents from './UserFormsComponents';
-import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogFormData';
+import { IDialogFormData } from '@/app/interfaces/admin-interfaces/shared-interfaces/IDialogDataInterface';
 
 
 interface IDesignerUsersBase{
